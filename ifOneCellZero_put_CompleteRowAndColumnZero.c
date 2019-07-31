@@ -17,13 +17,13 @@ void convertMatrix(int r,int c,int a[r][c])
             }
         }
     }
-    for(i=0;i<c;i++)
+    for(i=1;i<c;i++)
     {
         if(a[0][i]==0)
             for(j=1;j<r;j++)
                 a[j][i]=0;
     }
-    for(i=0;i<r;i++)
+    for(i=1;i<r;i++)
     {
         if(a[i][0]==0)
             for(j=1;j<c;j++)

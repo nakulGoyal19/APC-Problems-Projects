@@ -8,7 +8,8 @@ struct Interval
     Interval(){}
     Interval(int s,int v)
     {
-        st=s;endd=v;
+        st=s;
+        endd=v;
     }
 };
 int cmp(const void* a,const void* b)
