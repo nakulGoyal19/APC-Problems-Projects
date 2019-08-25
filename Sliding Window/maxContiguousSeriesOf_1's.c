@@ -36,7 +36,7 @@ int main(){
         {
             r=l;
         }
-        printf("%d %d %d %d ",l,r,si,ei);
+        //printf("%d %d %d %d ",l,r,si,ei);
         if(max<(r-l))
         {
             si=l;ei=r-1;
