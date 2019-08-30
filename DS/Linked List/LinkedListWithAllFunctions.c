@@ -64,9 +64,22 @@ void deleteAtBeg(struct node **h)
    struct node *c=*h;
    *h=c->next;
 }
-void deleteAtEnd(struct node *h)
+void deleteAtEnd(struct node **h)
 {
-    struct node *curr=h;
+    struct node *curr=*h;
+    if(curr==NULL)
+        return;
+    if(curr->next==NULL)
+    {
+        *h=NULL;
+        return;
+    }
+
+    if(curr->next->next==NULL)
+    {
+        curr->next=NULL;
+        return;
+    }
     while(curr&&curr->next&&curr->next->next)
     {
         curr=curr->next;
