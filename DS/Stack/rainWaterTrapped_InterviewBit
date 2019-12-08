@@ -1,0 +1,65 @@
+public class Solution {
+    // DO NOT MODIFY THE LIST. IT IS READ ONLY
+    public int trap(final List<Integer> A) {
+        //We will use stack to implement the solution.
+        Stack<Integer> s=new Stack<Integer>();
+        int start=0;
+        int ans=0,i;
+        //traverse from start to end upto to max element.
+        for(i=0;i<A.size();i++)
+        {
+            if(s.empty())
+                s.push(i);
+            //push every element smaller than the start.
+            else if(A.get(start)>A.get(i))
+                s.push(i);
+            //calculate the trapped water.
+            else
+            {
+                int dist=i-start-1;
+                int area=A.get(start)>A.get(i)?A.get(i)*dist:A.get(start)*dist;
+                while(!s.empty())
+                {
+                    if(s.size()>1)
+                        area=area-A.get(s.peek());
+                    s.pop();
+                }
+                //System.out.println(dist+" "+start+" "+area+" "+i);
+                ans+=area;
+                s.push(i);
+                start=i;
+            }
+        }
+        //System.out.println("nn");
+        s.clear();
+        start=A.size()-1;
+        //traverse from end to start upto the max element.
+        for(i=A.size()-1;i>=0;i--)
+        {
+            if(s.empty())
+                s.push(i);
+            //push all elements smaller or equal than start.
+            else if(A.get(start)>=A.get(i))
+                s.push(i);
+            //calculate the trapped water.
+            else
+            {
+                int dist=start-i-1;
+                int area=A.get(start)>A.get(i)?A.get(i)*dist:A.get(start)*dist;
+                while(!s.empty())
+                {
+                    if(s.size()>1)
+                        area=area-A.get(s.peek());
+                    s.pop();
+                }
+                //System.out.println(dist+" "+start+" "+area+" "+i);
+                if(area>0)
+                ans+=area;
+                s.push(i);
+                start=i;
+            }
+        }
+        
+        return ans;
+    }
+}
