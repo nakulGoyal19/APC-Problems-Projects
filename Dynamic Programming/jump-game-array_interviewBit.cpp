@@ -5,7 +5,7 @@ int Solution::canJump(vector<int> &A) {
     for(i=1;i<A.size();i++)
     {
         int max=A[i-1]-1>temp[i-1]-1?A[i-1]-1:temp[i-1]-1;
-        if(max<0&&i<A.size()-1)
+        if(max<0)
             return 0;
         temp[i]=max;
     }
